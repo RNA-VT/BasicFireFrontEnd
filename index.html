@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      padding: 0 0 0 10px;
+      height: 260px;
+    }
+
+    #square {
+      padding: 10px;
+      height: 120px;
+      width: 120px;
+      border-radius: 10px;
+      background: #b5edc2;
+      transition: 1.2s;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1>Basic Ass Fire Controller</h1>
+  <div>
+    <button id="poofer0" onmousedown="openPoofer('0')" onmouseup="closePoofer(0)">
+      Poofer 0
+    </button>
+    <button id="poofer1" onmousedown="openPoofer('1')" onmouseup="closePoofer(1)">
+      Poofer 1
+    </button>
+    <button id="poofer2" onmousedown="openPoofer('2')" onmouseup="closePoofer(2)">
+      Poofer 2
+    </button>
+    <button id="poofer3" onmousedown="openPoofer('3')" onmouseup="closePoofer(3)">
+      Poofer 3
+    </button>
+    <button id="poofer4" onmousedown="openPoofer('4')" onmouseup="closePoofer(4)">
+      Poofer 4
+    </button>
+  </div>
+  <div>
+    <button id="pooferall" onmousedown="openPoofer('all')" onmouseup="closePoofer('all')">
+      All
+    </button>
+  </div>
+  <script>
+
+    function openPoofer(id) {
+      console.log(httpGet("http://192.168.1.200/" + id + "/on/"));
+    }
+
+    function closePoofer(id) {
+      console.log(httpGet("http://192.168.1.200/" + id + "/off/"));
+    }
+
+    function httpGet(theUrl) {
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.open("GET", theUrl, false); // false for synchronous request
+      xmlHttp.send(null);
+      return xmlHttp.responseText;
+    }
+
+  </script>
+</body>
+
+</html>
